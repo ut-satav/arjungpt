@@ -162,7 +162,7 @@ parso==0.8.3
 pexpect==4.9.0
 pickleshare==0.7.5
 Pillow==8.4.0
-pinecone-client==3.0.0.dev4
+pinecone-client
 pinecone-datasets==0.5.0rc11
 pinecone-text==0.7.1
 pip==24.0
