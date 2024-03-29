@@ -105,7 +105,7 @@ jupyterlab_server==2.25.4
 jupyterlab_widgets==3.0.10
 keras==3.0.5
 kiwisolver==1.4.5
-langchain==0.0.346
+langchain
 langchain-community==0.0.28
 langchain-core
 langchain-text-splitters==0.0.1
