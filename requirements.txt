@@ -1,2 +1,3 @@
 pip install langchain
+pip install langchain-community
 pip install ollama
