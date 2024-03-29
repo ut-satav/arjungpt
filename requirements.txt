@@ -109,7 +109,7 @@ langchain
 langchain-community==0.0.28
 langchain-core
 langchain-text-splitters==0.0.1
-langsmith==0.0.92
+langsmith
 libclang==16.0.6
 Markdown==3.6
 markdown-it-py==3.0.0
