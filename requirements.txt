@@ -107,7 +107,7 @@ keras==3.0.5
 kiwisolver==1.4.5
 langchain==0.0.346
 langchain-community==0.0.28
-langchain-core==0.0.13
+langchain-core
 langchain-text-splitters==0.0.1
 langsmith==0.0.92
 libclang==16.0.6
