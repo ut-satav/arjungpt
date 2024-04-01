@@ -1,3 +1,2 @@
-ollama-python
-langchain-community
 torch
+
