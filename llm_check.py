@@ -59,7 +59,9 @@ def main():
 
     option_model = st.selectbox(
     'Choose model',
-    ('Intel Dynamic TinyBert','Deepset Roberta'))    
+    ('Intel Dynamic TinyBert','Deepset Roberta'))
+
+    answer = 'None'    
     if question and context and option_model:
         # Run the selected function based on the user's choice
         if option_model == "'Intel Dynamic TinyBert'":
