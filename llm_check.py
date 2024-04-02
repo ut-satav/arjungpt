@@ -60,14 +60,14 @@ def main():
     option_model = st.selectbox(
     'Choose model',
     ('Intel Dynamic TinyBert','Deepset Roberta'))    
-    if question and context:
+    if question and context and option_model:
         # Run the selected function based on the user's choice
         if option_model == "'Intel Dynamic TinyBert'":
             answer = intelBert(question,context)
         elif option_model == "Deepset Roberta":
             answer = askingRoberta(question,context)
         # Once text input is provided, display it
-    st.write(answer)
+        st.write(answer)
 
 if __name__ == "__main__":
     main()
