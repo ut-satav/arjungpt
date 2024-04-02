@@ -67,7 +67,7 @@ def main():
         elif option_model == "Deepset Roberta":
             answer = askingRoberta(question,context)
         # Once text input is provided, display it
-        st.write(answer)
+    st.write(answer)
 
 if __name__ == "__main__":
     main()
