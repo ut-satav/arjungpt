@@ -3,7 +3,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 
 # Print the answer
-def askingllm(question,context):
+def intelBert(question,context):
 
     tokenizer = AutoTokenizer.from_pretrained("Intel/dynamic_tinybert")
     model = AutoModelForQuestionAnswering.from_pretrained("Intel/dynamic_tinybert")
@@ -25,7 +25,21 @@ def askingllm(question,context):
     answer = tokenizer.convert_tokens_to_string(tokenizer.convert_ids_to_tokens(input_ids[0][answer_start:answer_end]))
 
     return answer
+
+def askingRoberta(question,context):
+    from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+
+    model_name = "deepset/roberta-base-squad2"
+
+    # a) Get predictions
+    nlp = pipeline('question-answering', model=model_name, tokenizer=model_name)
+    QA_input = {
+        'question': question,
+        'context': context
+    }
+    answer = nlp(QA_input)['answer']
     
+    return answer
 
 
 def main():
@@ -42,9 +56,16 @@ def main():
     # Wait until the question is not empty
     if not question:
         st.info("Please enter a question...")
-        
+
+    option_model = st.selectbox(
+    'Choose model',
+    ('Intel Dynamic TinyBert','Deepset Roberta'))    
     if question and context:
-        answer = askingllm(question,context)
+        # Run the selected function based on the user's choice
+        if option_model == "'Intel Dynamic TinyBert'":
+            answer = intelBert(question,context)
+        elif option_model == "Deepset Roberta":
+            answer = askingRoberta(question,context)
         # Once text input is provided, display it
         st.write(answer)
 
