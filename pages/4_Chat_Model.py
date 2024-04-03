@@ -26,7 +26,7 @@ def get_chat_model(question):
     repetition_penalty=float(1.2),
     renormalize_logits=True)
 
-    return generate_text
+    return res[0]["generated_text"]
 
 
 def main():
