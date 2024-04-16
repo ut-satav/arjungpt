@@ -51,15 +51,15 @@ def get_chat_model(question):
 
 
 def main():
-    # context = st.text_input(label='Context Article', 
-    #                            placeholder='Paste your article here',key='context')
-    # if not context:
-    #     st.info("Please enter some context...")
+    context = st.text_input(label='Context Article', 
+                               placeholder='Paste your article here',key='context')
+    if not context:
+        st.info("Please enter some context...")
 
-    # filename = "context.txt"
-    # new_content = context
+    filename = "context.txt"
+    new_content = context
 
-    #overwrite_text_file(filename, new_content)
+    overwrite_text_file(filename, new_content)
 
     question =  st.text_input(label='Question', 
                                placeholder='Type your question here',key='question')+'?'
