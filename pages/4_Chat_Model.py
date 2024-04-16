@@ -19,6 +19,7 @@ def overwrite_text_file(filename, new_content):
 def get_chat_model(question):
     import os
     api_key=os.getenv('api_key')
+    st.write(api_key)
     # Load data
     loader = TextLoader("context.txt")
     docs = loader.load()
