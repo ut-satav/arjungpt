@@ -53,7 +53,7 @@ def main():
     if uploaded_file is None:
         st.info("Please choose a txt file ..")
     
-    print(uploaded_file)
+    st.write(uploaded_file)
     question =  st.text_input(label='Question', 
                                placeholder='Type your question here',key='question')+'?'
     # Wait until the question is not empty
