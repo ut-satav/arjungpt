@@ -14,7 +14,7 @@ st.sidebar.header("Chat Model")
 
 def get_chat_model(question,uploaded_file):
     import os
-    api_key=os.getenv['api_key'] 
+    api_key=os.getenv('api_key')
     # Load data
     loader = TextLoader(uploaded_file)
     docs = loader.load()
