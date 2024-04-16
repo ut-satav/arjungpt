@@ -16,12 +16,11 @@ def overwrite_text_file(filename, new_content):
         with open(filename, "w") as file:
             file.write(new_content)
 
-def get_chat_model(question,uploaded_file):
+def get_chat_model(question,new_content):
     import os
     api_key=os.getenv('api_key')
     # Load data
-    loader = TextLoader("context.txt")
-    st.write(loader)
+    loader = new_content
     docs = loader.load()
     # Split text into chunks
     text_splitter = RecursiveCharacterTextSplitter()
@@ -60,7 +59,7 @@ def main():
     filename = "context.txt"
     new_content = context
 
-    overwrite_text_file(filename, new_content)
+    #overwrite_text_file(filename, new_content)
 
     question =  st.text_input(label='Question', 
                                placeholder='Type your question here',key='question')+'?'
@@ -71,7 +70,7 @@ def main():
     answer = 'None'    
     if question and context:
         # Run the selected function based on the user's choice
-        answer = get_chat_model(question,filename)
+        answer = get_chat_model(question,new_content)
         # Once text input is provided, display it
         st.write(answer)
 
