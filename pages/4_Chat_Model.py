@@ -47,8 +47,6 @@ def get_chat_model(question,uploaded_file):
 
 
 def main():
-    context = st.text_input(label='Context Article', 
-                               placeholder='Paste your article here',key='context')
     
     from io import StringIO
     uploaded_file = st.file_uploader("Choose a file")
