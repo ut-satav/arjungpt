@@ -1,20 +1,20 @@
 import streamlit as st
+from langchain_community.document_loaders import TextLoader
+from langchain_mistralai.chat_models import ChatMistralAI
+from langchain_mistralai.embeddings import MistralAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.chains import create_retrieval_chain
 st.set_page_config(page_title="Chat Model")
 
 st.markdown("# Chat Model")
 st.sidebar.header("Chat Model")
 
 def get_chat_model(question,uploaded_file):
-    from langchain_community.document_loaders import TextLoader
-    from langchain_mistralai.chat_models import ChatMistralAI
-    from langchain_mistralai.embeddings import MistralAIEmbeddings
-    from langchain_community.vectorstores import FAISS
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
-    from langchain.chains.combine_documents import create_stuff_documents_chain
-    from langchain_core.prompts import ChatPromptTemplate
-    from langchain.chains import create_retrieval_chain
     import os
-    api_key=os.environ['api_key'] 
+    api_key=os.getenv['api_key'] 
     # Load data
     loader = TextLoader(uploaded_file)
     docs = loader.load()
