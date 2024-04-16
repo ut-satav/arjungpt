@@ -21,6 +21,7 @@ def get_chat_model(question,uploaded_file):
     api_key=os.getenv('api_key')
     # Load data
     loader = TextLoader("context.txt")
+    st.write(loader)
     docs = loader.load()
     # Split text into chunks
     text_splitter = RecursiveCharacterTextSplitter()
