@@ -12,11 +12,15 @@ st.set_page_config(page_title="Chat Model")
 st.markdown("# Chat Model")
 st.sidebar.header("Chat Model")
 
+def overwrite_text_file(filename, new_content):
+        with open(filename, "w") as file:
+            file.write(new_content)
+
 def get_chat_model(question,uploaded_file):
     import os
     api_key=os.getenv('api_key')
     # Load data
-    loader = TextLoader(uploaded_file)
+    loader = TextLoader("context.txt")
     docs = loader.load()
     # Split text into chunks
     text_splitter = RecursiveCharacterTextSplitter()
@@ -47,13 +51,16 @@ def get_chat_model(question,uploaded_file):
 
 
 def main():
-    
-    from io import StringIO
-    uploaded_file = st.file_uploader("Choose a file")
-    if uploaded_file is None:
-        st.info("Please choose a txt file ..")
-    
-    st.write(uploaded_file)
+    context = st.text_input(label='Context Article', 
+                               placeholder='Paste your article here',key='context')
+    if not context:
+        st.info("Please enter some context...")
+
+    filename = "context.txt"
+    new_content = context
+
+    overwrite_text_file(filename, new_content)
+
     question =  st.text_input(label='Question', 
                                placeholder='Type your question here',key='question')+'?'
     # Wait until the question is not empty
@@ -61,9 +68,9 @@ def main():
         st.info("Please enter a question...")
 
     answer = 'None'    
-    if question and uploaded_file:
+    if question and context:
         # Run the selected function based on the user's choice
-        answer = get_chat_model(question,uploaded_file)
+        answer = get_chat_model(question,filename)
         # Once text input is provided, display it
         st.write(answer)
 
